@@ -97,6 +97,18 @@ namespace AddressBookSystem
                 Console.WriteLine("PhoneNo: " + contact.phoneNo);
             }
         }
+        public void delete(string name)
+        {
+            foreach (Contact val in contacts)
+            {
+                if (val.firstName == name)
+                {
+                    contacts.Remove(val);
+                    break;
+                }
+            }
+            Console.WriteLine("Deleted Successfully");
+        }
         public void addressBook()
         {
             int exit = 0;
@@ -106,7 +118,8 @@ namespace AddressBookSystem
                 Console.WriteLine("Enter 1 to add new Contact");
                 Console.WriteLine("Enter 2 to edit the Contact");
                 Console.WriteLine("Enter 3 to display adress book");
-                Console.WriteLine("Enter 4 to exit");
+                Console.WriteLine("Enter 4 to delete a contact");
+                Console.WriteLine("Enter 5 to exit");
                 int n = Convert.ToInt32(Console.ReadLine());
                 switch (n)
                 {
@@ -138,6 +151,11 @@ namespace AddressBookSystem
                         display();
                         break;
                     case 4:
+                        Console.WriteLine("Enter the firstName");
+                        string name = Console.ReadLine();
+                        delete(name);
+                        break;
+                    case 5:
                         exit = 1;
                         break;
                 }
