@@ -109,9 +109,10 @@ namespace AddressBookSystem
             }
             Console.WriteLine("Deleted Successfully");
         }
-        public void addressBook()
+        public List<Contact> addressBook()
         {
             int exit = 0;
+            contacts.Clear();
             Console.WriteLine("Welcome to Address Book System");
             while (true)
             {
@@ -164,6 +165,7 @@ namespace AddressBookSystem
                 if (exit == 1)
                     break;
             }
+            return contacts;
         }
     }
 }

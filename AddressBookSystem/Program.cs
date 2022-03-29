@@ -10,8 +10,9 @@ namespace AddressBookSystem
     {
         static void Main(string[] args)
         {
-            AddressBook addressbook = new AddressBook();
-            addressbook.addressBook();
+            MultipleAddressBook multipleAddressBook = new MultipleAddressBook();
+            multipleAddressBook.MultipleBook();
+            multipleAddressBook.Display();
         }
     }
 }
