@@ -158,6 +158,8 @@ namespace AddressBookSystem
                     case 5:
                         exit = 1;
                         break;
+                    default:
+                        break;
                 }
                 if (exit == 1)
                     break;
