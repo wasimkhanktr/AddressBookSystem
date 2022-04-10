@@ -15,6 +15,7 @@ namespace AddressBookSystem
             multipleAddressBook.Display();
             multipleAddressBook.SearchPersonInCityOrState();
             multipleAddressBook.ViewPersonInCityOrState();
+            multipleAddressBook.CountByCityOrState();
         }
     }
 }
