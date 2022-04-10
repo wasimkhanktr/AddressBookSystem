@@ -11,18 +11,27 @@ namespace AddressBookSystem
         List<Contact> contacts = new List<Contact>();
         public void AddContact(string firstName, string lastName, string address, string city, string state, string zipCode, string email, string phoneNo)
         {
-            contacts.Add(new Contact()
+            if (checkIfAlreadyPresent(firstName, lastName))
+                Console.WriteLine("User Already Present");
+            else
             {
-                firstName = firstName,
-                lastName = lastName,
-                address = address,
-                city = city,
-                state = state,
-                zipCode = zipCode,
-                email = email,
-                phoneNo = phoneNo
-            });
-            Console.WriteLine("Contacts of " + firstName + " has been added.");
+                contacts.Add(new Contact()
+                {
+                    firstName = firstName,
+                    lastName = lastName,
+                    address = address,
+                    city = city,
+                    state = state,
+                    zipCode = zipCode,
+                    email = email,
+                    phoneNo = phoneNo
+                });
+                Console.WriteLine("Contacts of " + firstName + " has been added.");
+            }
+        }
+        public bool checkIfAlreadyPresent(string firstName, string lastName)
+        {
+            return contacts.Any(x => x.firstName == firstName && x.lastName == lastName);
         }
         public void edit(string Name)
         {
@@ -109,10 +118,9 @@ namespace AddressBookSystem
             }
             Console.WriteLine("Deleted Successfully");
         }
-        public List<Contact> addressBook()
+        public void addressBook()
         {
             int exit = 0;
-            contacts.Clear();
             Console.WriteLine("Welcome to Address Book System");
             while (true)
             {
@@ -165,7 +173,6 @@ namespace AddressBookSystem
                 if (exit == 1)
                     break;
             }
-            return contacts;
         }
     }
 }
