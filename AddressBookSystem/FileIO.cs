@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,6 +14,7 @@ namespace AddressBookSystem
     {
         string filepath = @"C:\Users\wasimkhanktr\Desktop\BridgeLabs\.net\assigment\AddressBookSystem\AddressBookSystem\TextFile1.txt";
         string path = @"C:\Users\wasimkhanktr\Desktop\BridgeLabs\.net\assigment\AddressBookSystem\AddressBookSystem\CSVFile.csv";
+        string jsonPath = @"C:\Users\wasimkhanktr\Desktop\BridgeLabs\.net\assigment\AddressBookSystem\AddressBookSystem\jsonFile.json";
         public void WriteUsingWriteWriter(Dictionary<string, List<Contact>> UserAddressBook)
         {
             foreach (KeyValuePair<string, List<Contact>> user in UserAddressBook)
@@ -70,5 +72,16 @@ namespace AddressBookSystem
                 }
             }
         }
+        public void WriteInJsonFile(Dictionary<string, List<Contact>> UserAddressBook)
+        {
+            JsonSerializer jsonSerializer = new JsonSerializer();
+            using (var write = new StreamWriter(jsonPath))
+            using (JsonWriter writer = new JsonTextWriter(write))
+            {
+                jsonSerializer.Serialize(writer, UserAddressBook);
+            }
+            Console.WriteLine("File Written Successfully");
+        }
+
     }
 }

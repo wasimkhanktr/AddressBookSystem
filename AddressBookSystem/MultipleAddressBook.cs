@@ -33,6 +33,11 @@ namespace AddressBookSystem
             FileIO file = new FileIO();
             file.WriteInCSVFile(UserAddressBook);
         }
+        public void WriteInJsonFile()
+        {
+            FileIO file = new FileIO();
+            file.WriteInJsonFile(UserAddressBook);
+        }
         public void ReadFile()
         {
             FileIO file = new FileIO();
