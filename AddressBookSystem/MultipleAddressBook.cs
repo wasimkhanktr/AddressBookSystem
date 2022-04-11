@@ -93,5 +93,46 @@ namespace AddressBookSystem
             }
             Console.WriteLine("No of persons in city " + city + " is " + count);
         }
+        public void SortPersonName()
+        {
+            Console.WriteLine("Enter 1 to sort firstName");
+            Console.WriteLine("Enter 2 to sort City");
+            Console.WriteLine("Enter 3 to sort state");
+            Console.WriteLine("Enter 4 to sort zip");
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            if (choice == 1)
+            {
+                foreach (KeyValuePair<string, List<Contact>> user in UserAddressBook)
+                {
+                    user.Value.Sort((emp1, emp2) => emp1.firstName.CompareTo(emp2.firstName));
+                }
+            }
+            if (choice == 2)
+            {
+                foreach (KeyValuePair<string, List<Contact>> user in UserAddressBook)
+                {
+                    user.Value.Sort((emp1, emp2) => emp1.city.CompareTo(emp2.city));
+                }
+            }
+
+            if (choice == 3)
+            {
+                foreach (KeyValuePair<string, List<Contact>> user in UserAddressBook)
+                {
+                    user.Value.Sort((emp1, emp2) => emp1.state.CompareTo(emp2.state));
+                }
+            }
+
+            if (choice == 4)
+            {
+                foreach (KeyValuePair<string, List<Contact>> user in UserAddressBook)
+                {
+                    user.Value.Sort((emp1, emp2) => emp1.zipCode.CompareTo(emp2.zipCode));
+                }
+            }
+
+            Display();
+        }
     }
 }
