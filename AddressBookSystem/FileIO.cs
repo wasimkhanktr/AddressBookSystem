@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,7 @@ namespace AddressBookSystem
     internal class FileIO
     {
         string filepath = @"C:\Users\wasimkhanktr\Desktop\BridgeLabs\.net\assigment\AddressBookSystem\AddressBookSystem\TextFile1.txt";
+        string path = @"C:\Users\wasimkhanktr\Desktop\BridgeLabs\.net\assigment\AddressBookSystem\AddressBookSystem\CSVFile.csv";
         public void WriteUsingWriteWriter(Dictionary<string, List<Contact>> UserAddressBook)
         {
             foreach (KeyValuePair<string, List<Contact>> user in UserAddressBook)
@@ -38,6 +41,34 @@ namespace AddressBookSystem
             Console.WriteLine(lines);
             Console.WriteLine("File Read Successfully");
         }
-
+        public void WriteInCSVFile(Dictionary<string, List<Contact>> UserAddressBook)
+        {
+            using (StreamWriter writer = new StreamWriter(path))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                foreach (KeyValuePair<string, List<Contact>> user in UserAddressBook)
+                {
+                    csvWriter.WriteRecords(user.Value.ToList());
+                }
+            Console.WriteLine("File Written Successfully");
+        }
+        public void ReadInCSVFile()
+        {
+            using (StreamReader streamreader = new StreamReader(path))
+            using (CsvReader csvReader = new CsvReader(streamreader, CultureInfo.InvariantCulture))
+            {
+                var records = csvReader.GetRecords<Contact>().ToList();
+                foreach (Contact contact in records)
+                {
+                    Console.WriteLine("FirstName: " + contact.firstName);
+                    Console.WriteLine("LastName: " + contact.lastName);
+                    Console.WriteLine("City: " + contact.city);
+                    Console.WriteLine("State: " + contact.state);
+                    Console.WriteLine("Address: " + contact.address);
+                    Console.WriteLine("zipCode: " + contact.zipCode);
+                    Console.WriteLine("Email: " + contact.email);
+                    Console.WriteLine("PhoneNo: " + contact.phoneNo);
+                }
+            }
+        }
     }
 }
