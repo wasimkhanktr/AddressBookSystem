@@ -13,9 +13,12 @@ namespace AddressBookSystem
             MultipleAddressBook multipleAddressBook = new MultipleAddressBook();
             multipleAddressBook.MultipleBook();
             multipleAddressBook.Display();
-            multipleAddressBook.SearchPersonInCityOrState();
-            multipleAddressBook.ViewPersonInCityOrState();
-            multipleAddressBook.CountByCityOrState();
+            //multipleAddressBook.SearchPersonInCityOrState();
+            //multipleAddressBook.ViewPersonInCityOrState();
+            //multipleAddressBook.CountByCityOrState();
+            //multipleAddressBook.SortPersonName();
+            multipleAddressBook.WriteFile();
+            multipleAddressBook.ReadFile();
         }
     }
 }

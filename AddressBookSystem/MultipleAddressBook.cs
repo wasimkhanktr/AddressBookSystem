@@ -23,6 +23,16 @@ namespace AddressBookSystem
                 n--;
             }
         }
+        public void WriteFile()
+        {
+            FileIO file = new FileIO();
+            file.WriteUsingWriteWriter(UserAddressBook);
+        }
+        public void ReadFile()
+        {
+            FileIO file = new FileIO();
+            file.ReadFile();
+        }
         public void Display()
         {
             foreach (KeyValuePair<string, List<Contact>> user in UserAddressBook)
